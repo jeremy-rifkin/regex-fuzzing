@@ -31,11 +31,8 @@ RUN git checkout 9b40c0dcb89f102dd0814728fb7da938b62bab68
 WORKDIR /opt/regulator-dynamic/fuzzer
 COPY ./regex-fuzzer-patch.patch ./regex-fuzzer-patch.patch
 RUN patch Makefile regex-fuzzer-patch.patch
-# doing the node clone step while network is available
-RUN make build/node/.git
-RUN echo "function build {\npushd /opt/regulator-dynamic/fuzzer || exit 1\nmake -j 12 node && make -j\npopd || exit 1\n}" >> $HOME/.bashrc
-# RUN make -j 12 node
-# RUN make -j
+RUN make -j 12 node
+RUN make -j
 
 # Setup poetry and python deps
 WORKDIR /opt/regulator-dynamic/driver
