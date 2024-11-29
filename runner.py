@@ -3,8 +3,8 @@ import pathlib
 import subprocess
 import sys
 
-fuzzer_path = pathlib.Path.home() / "regulator-dynamic/fuzzer/build/fuzzer_stripped"
-driver_path = pathlib.Path.home() / "regulator-dynamic/driver/main.py"
+fuzzer_path = "/opt/regulator-dynamic/fuzzer/build/fuzzer"
+driver_path = "/opt/regulator-dynamic/driver/main.py"
 
 def worker(arg):
     regex, flags = arg
@@ -28,7 +28,7 @@ def main():
         print(f"{len(lines)} unique regexes")
         for line in lines:
             flags = line[line.rindex("/") + 1:]
-            line = line.rstrip("gmi")
+            line = line.rstrip("gmis")
             # just some sanity checks
             assert line.endswith("/")
             assert line.startswith("/")
