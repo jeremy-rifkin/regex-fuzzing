@@ -5,7 +5,7 @@ ReDoS vulnerabilities. More info at https://www.usenix.org/system/files/sec22sum
 
 ## Instructions
 
-`make run` will build and run a docker container. It will take a while.
+`make run` will build and run a container using `podman`. It will take a while.
 
 After that, you can fuzz regular expressions with:
 ```
